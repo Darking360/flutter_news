@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import '../blocs/stories.provider.dart';
 import '../blocs/stories_bloc.dart';
+import '../widgets/news_list_tile.dart';
 
 class NewsList extends StatelessWidget {
 
@@ -13,7 +14,9 @@ class NewsList extends StatelessWidget {
         appBar: AppBar(
           title: Text('Top News!'),
         ),
-        body: buildList(bloc),
+        body: SafeArea(
+          child: buildList(bloc),
+        ),
       );
     }
 
@@ -29,7 +32,8 @@ class NewsList extends StatelessWidget {
           return ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder: (BuildContext context, int index) {
-              return Text('Item number $index');
+              bloc.fetchItem(snapshot.data[index]);
+              return NewsListTile(snapshot.data[index]);
             },
           );
         }
