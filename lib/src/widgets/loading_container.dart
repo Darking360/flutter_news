@@ -6,8 +6,8 @@ class LoadingContainer extends StatelessWidget {
       return Column(
         children: <Widget>[
           ListTile(
-            title: ,
-            subtitle: ,
+            title: greyBox(),
+            subtitle: greyBox(),
           ),
           Divider(height: 2.0, color: Colors.grey)
         ],
@@ -19,7 +19,7 @@ class LoadingContainer extends StatelessWidget {
       color: Colors.grey[200],
       width: 150.0,
       height: 24.0,
-      margin: EdgeInsets.all(),
+      margin: EdgeInsets.only(top: 5.0, bottom: 5.0),
     );
   }
 

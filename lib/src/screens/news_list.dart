@@ -3,6 +3,7 @@ import 'dart:async';
 import '../blocs/stories.provider.dart';
 import '../blocs/stories_bloc.dart';
 import '../widgets/news_list_tile.dart';
+import '../widgets/refresh.dart';
 
 class NewsList extends StatelessWidget {
 
@@ -29,12 +30,14 @@ class NewsList extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else {
-          return ListView.builder(
-            itemCount: snapshot.data.length,
-            itemBuilder: (BuildContext context, int index) {
-              bloc.fetchItem(snapshot.data[index]);
-              return NewsListTile(snapshot.data[index]);
-            },
+          return Refresh(
+            child: ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (BuildContext context, int index) {
+                bloc.fetchItem(snapshot.data[index]);
+                return NewsListTile(snapshot.data[index]);
+              },
+            ),
           );
         }
       },
